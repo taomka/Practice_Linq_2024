@@ -79,12 +79,14 @@ namespace Practice_Linq_2024
         {
             //Query 3: Вивести всі домашні матчі збірної Франції за 2021 рік, де вона зіграла у нічию.
 
-            var selectedGames = games;   // Корегуємо запит !!!
+            var selectedGames = games.Where(t => t.Country == "France" && (t.Home_team == "France" || t.Away_team == "France") && t.Date >= new DateTime(2021, 1, 1) && t.Date < new DateTime(2022, 1, 1) && (t.Home_score == t.Away_score));   // Корегуємо запит !!!
 
             // Перевірка
             Console.WriteLine("\n======================== QUERY 3 ========================");
 
             // див. приклад як має бути виведено:
+            foreach (var game in selectedGames)
+                Console.WriteLine($"{game.Date.ToString("dd.MM.yyyy")} {game.Home_team} - {game.Away_team}, Score: {game.Home_score} - {game.Away_score}, Country: {game.Country}");
 
 
         }
